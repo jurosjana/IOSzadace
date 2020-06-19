@@ -47,7 +47,7 @@ class QuizTableViewCell:UITableViewCell{
     
     
     
-    func setup(withQuiz quiz: QuizCellModel) {  //upisi neki review
+    func setup(withQuiz quiz: QuizCellModel) {  
         titleLabel.text = quiz.title
         titleLabel.sizeToFit()
         descriptionLabel.text = quiz.description

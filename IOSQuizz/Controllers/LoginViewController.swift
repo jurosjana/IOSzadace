@@ -14,6 +14,7 @@ class LoginViewController : UIViewController {
     @IBOutlet weak var UsernameLabel: UILabel!
     @IBOutlet weak var PasswordLabel: UILabel!
     
+    @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var UsernameTF: UITextField!
     
@@ -23,78 +24,102 @@ class LoginViewController : UIViewController {
     @IBOutlet weak var WrongLabel: UILabel!{
         didSet {
             WrongLabel.isHidden = true
+            WrongLabel.numberOfLines = 0
+            WrongLabel.sizeToFit()
         }
     }
     
     @IBOutlet weak var LoginButton: UIButton!
     
     @IBAction func Login(_ sender: Any) {
+        
+        
         guard let username = self.UsernameTF.text else { return }
         guard let password = self.PasswordTF.text else { return }
-        login(username: username, password: password)
+        login(username: username, password: password, completion: {log in
+            if(log == true){
+                DispatchQueue.main.async {
+                self.animateEverythingOut(completion: {
+                    _ in
+                        UIApplication.shared.windows.first!.rootViewController = TabBarViewController()
+                    })
+                }
+                
+            } else {
+                DispatchQueue.main.async {
+                     self.WrongLabel.isHidden = false;
+                     self.UsernameTF.text = "";
+                     self.PasswordTF.text = "";
+                }
+            }
+        })
     }
     
-    func login(username: String, password:String) {
-            
-        let urlString = "https://iosquiz.herokuapp.com/api/session/?"+"username="+username+"&password="+password;
+    override func viewDidLayoutSubviews() {
         
-                    
-        let parameters = ["username": username, "password": password]
-
-        if let url = URL(string: urlString) {
-
-            let session = URLSession.shared
-
-            var request = URLRequest(url: url)
-            
-            request.httpMethod = "POST"
-
-            do {
-                request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
-            } catch let error {
-                print(error.localizedDescription)
-            }
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
-
+       self.UsernameTF.center = CGPoint(x: -UsernameTF.frame.size.width, y: UsernameTF.frame.origin.y+UsernameTF.frame.size.height/2)
+        self.PasswordTF.center = CGPoint(x: -PasswordTF.frame.size.width, y: PasswordTF.frame.origin.y+PasswordTF.frame.size.height/2)
+        //self.UsernameTF.alpha = 0.0
+        //self.PasswordTF.alpha = 0.0
+       // self.titleLabel.alpha = 0.0
+        self.titleLabel.textColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
+    }
+    
+    
+    override func viewDidLoad() {
+        self.UsernameTF.alpha = 0.0
+        self.PasswordTF.alpha = 0.0
+        titleLabel.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        animateEverythingIn()
+    }
+    
+    
+    func animateEverythingIn() {
+        UIView.animate(withDuration: 1, delay: 0.3, animations: {
+            self.UsernameTF.transform = CGAffineTransform.identity.translatedBy(x: self.UsernameTF.frame.size.width+self.view.frame.size.width*0.5, y: 0)
+            self.UsernameTF.alpha = 1
+            self.titleLabel.transform = CGAffineTransform(scaleX: 1, y: 1)
            
-            let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
-                guard error == nil else {
-                    return
-                }
-                guard let data = data else {
-                    return
-                }
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
-                        //print(json)
-                        if let token = json["token"] as? String,
-                             let id = json["user_id"] as? Int{
-                                let userDefaults = UserDefaults.standard;
-                                userDefaults.set(token, forKey: "token");
-                                userDefaults.set(id, forKey: "id");
-                                print(userDefaults.string(forKey: "token") as Any)
-                                print(userDefaults.string(forKey: "id") as Any)
-                            
-                            DispatchQueue.main.async {
-                                let vc = ListaKvizovaController(viewModel: QuizViewModel());
-                                self.navigationController?.pushViewController(vc, animated: true)
-                            }
-                            
-                        } else {
-                            DispatchQueue.main.async {
-                                 self.WrongLabel.isHidden = false;
-                                 self.UsernameTF.text = "";
-                                 self.PasswordTF.text = "";
-                            }
-            
-                        }
-                    }
-                } catch let error {
-                    print(error.localizedDescription)
-                }
-            })
-            task.resume()
+        }) { _ in
+
+        }
+        
+        UIView.animate(withDuration: 1, delay:0.7, animations: {
+            self.PasswordTF.transform = CGAffineTransform(translationX: self.PasswordTF.frame.size.width+self.view.frame.size.width*0.5, y: 0)
+            self.PasswordTF.alpha = 1
+           
+        }) { _ in
         }
     }
+
+    
+    func animateEverythingOut(completion: ((Bool)->Void)?){
+        UIView.animate(withDuration: 1, delay:0.0, animations: {
+            self.titleLabel.transform = CGAffineTransform(translationX: 0, y: -800)
+        }) { _ in
+        }
+        
+        UIView.animate(withDuration: 1, delay:0.2, animations: {
+            self.UsernameTF.center = CGPoint(x: self.view.frame.size.width/2+self.UsernameTF.frame.width/2, y: self.PasswordTF.frame.origin.y+self.UsernameTF.frame.size.height/2)
+            self.UsernameTF.transform = CGAffineTransform(translationX: 0, y: -800)
+            self.UsernameLabel.transform = CGAffineTransform(translationX: 0, y: -800)
+        }) { _ in
+        }
+        
+        UIView.animate(withDuration: 1, delay:0.4, animations: {
+            self.PasswordTF.center = CGPoint(x: self.view.frame.size.width/2+self.PasswordTF.frame.width/2, y: self.PasswordTF.frame.origin.y+self.PasswordTF.frame.size.height/2)
+            self.PasswordTF.transform = CGAffineTransform(translationX: 0, y: -800)
+            self.PasswordLabel.transform = CGAffineTransform(translationX: 0, y: -800)
+            }) { _ in
+        }
+        
+        UIView.animate(withDuration: 1, delay:0.6, animations: {
+                   self.LoginButton.transform = CGAffineTransform(translationX: 0, y: -800)
+        }, completion:completion)
+        
+    }
+    
 }
+    
+   
+

@@ -127,39 +127,27 @@ class QuestionView1: UIView {
     }
    
        
+    func obojigumb(button: UIButton, br: Int) {
+        if(tocanOdgovor==br){
+            button.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        } else  {
+            button.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        }
+    }
     
     @objc func oboji(sender:UIButton)
     {
+        
         switch sender.tag
         {
             case 1:
-                if(tocanOdgovor==0){
-                    self.odgovor1.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-                } else  {
-                    self.odgovor1.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
-                }
-                break
+                obojigumb(button: self.odgovor1, br: 0);                break
             case 2:
-                if(tocanOdgovor==1){
-                    self.odgovor2.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-                } else {
-                    self.odgovor2.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
-                }
-                break
+                obojigumb(button: self.odgovor2, br: 1);                break
             case 3:
-                if(tocanOdgovor==2){
-                   self.odgovor3.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-                }else{
-                    self.odgovor3.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
-                }
-                break
+                obojigumb(button: self.odgovor3, br: 2);                break
             case 4:
-                if(tocanOdgovor==3){
-                    self.odgovor4.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-                } else {
-                    self.odgovor4.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
-                }
-                break
+                obojigumb(button: self.odgovor4, br: 3);                break
             
             default: break
                 

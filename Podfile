@@ -8,5 +8,6 @@ target 'IOSQuizz' do
   # Pods for IOSQuizz
 pod 'PureLayout'
 pod 'Kingfisher'
+pod 'ReachabilitySwift'
 
 end

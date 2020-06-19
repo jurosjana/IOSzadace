@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+
+
 class ListaKvizovaController:UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
@@ -29,10 +31,17 @@ class ListaKvizovaController:UIViewController{
         super.viewDidLoad()
         setupTableView()
         bindViewModel()
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //skriva navigation bar
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
     
     func setupTableView() {
+       
         tableView.backgroundColor = #colorLiteral(red: 0.9578640546, green: 0.9080962065, blue: 0.9040285305, alpha: 1)
         tableView.delegate = self
         tableView.dataSource = self
@@ -99,8 +108,9 @@ extension ListaKvizovaController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if let viewModel = viewModel.viewModel(atIndex: indexPath) {
-            let kvizEkran = KvizEkran(viewModel: viewModel)
+        if let viewModel1 = viewModel.viewModel(atIndex: indexPath) {
+
+            let kvizEkran = KvizEkran(viewModel: viewModel1)
             navigationController?.pushViewController(kvizEkran, animated: true)
         }
     }
@@ -140,12 +150,13 @@ extension ListaKvizovaController: UITableViewDataSource {
 
 extension ListaKvizovaController: TableViewFooterViewDelegate {
     func logOut() {
-        print("delegate")
         let userDefaults = UserDefaults.standard
         userDefaults.removeObject(forKey: "token")
         userDefaults.removeObject(forKey: "user_id")
+        userDefaults.removeObject(forKey: "username")
         DispatchQueue.main.async {
-            self.navigationController?.popViewController(animated: true)
+            /*self.navigationController?.pushViewController(LoginViewController(), animated: true)*/
+            UIApplication.shared.windows.first!.rootViewController = LoginViewController()
         }
     }
 }

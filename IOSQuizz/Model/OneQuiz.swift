@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-class Quiz {
+class Quiz2 {
     let category : QuizCategory
     let description : String
     let id : Int
@@ -58,7 +58,7 @@ class Quiz {
     
     }
 
-        
+ 
     
 
 

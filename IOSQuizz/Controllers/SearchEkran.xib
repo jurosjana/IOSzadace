@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchEkran" customModule="IOSQuizz" customModuleProvider="target">
+            <connections>
+                <outlet property="searchButton" destination="ZYG-es-UV6" id="R7R-21-yeN"/>
+                <outlet property="searchTextField" destination="xdK-Qp-FmN" id="VQV-rE-ORE"/>
+                <outlet property="tableView" destination="4dU-a8-AgQ" id="CI6-d9-Rt9"/>
+                <outlet property="view" destination="iN0-l3-epB" id="I4s-qS-gAC"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xdK-Qp-FmN">
+                    <rect key="frame" x="30" y="96" width="250" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYG-es-UV6">
+                    <rect key="frame" x="325" y="98" width="48" height="30"/>
+                    <state key="normal" title="Search"/>
+                    <connections>
+                        <action selector="searchQuizzes:" destination="-1" eventType="touchUpInside" id="Oyf-qf-JCd"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4dU-a8-AgQ">
+                    <rect key="frame" x="0.0" y="167" width="414" height="695"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="xdK-Qp-FmN" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="52" id="AFY-mf-FMK"/>
+                <constraint firstItem="4dU-a8-AgQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Hxr-bR-1eP"/>
+                <constraint firstItem="4dU-a8-AgQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Hza-3f-Jtg"/>
+                <constraint firstItem="4dU-a8-AgQ" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="c8f-bs-ant"/>
+                <constraint firstItem="xdK-Qp-FmN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="cib-Zf-DZj"/>
+                <constraint firstItem="ZYG-es-UV6" firstAttribute="leading" secondItem="xdK-Qp-FmN" secondAttribute="trailing" constant="45" id="fED-Q3-RZo"/>
+                <constraint firstItem="ZYG-es-UV6" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="54" id="jfm-dt-mfc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ZYG-es-UV6" secondAttribute="trailing" constant="41" id="sGg-oM-53p"/>
+                <constraint firstItem="4dU-a8-AgQ" firstAttribute="top" secondItem="xdK-Qp-FmN" secondAttribute="bottom" constant="37" id="uJv-5h-74G"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="137.68115942028987" y="91.741071428571431"/>
+        </view>
+    </objects>
+</document>

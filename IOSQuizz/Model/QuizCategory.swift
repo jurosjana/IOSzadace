@@ -7,10 +7,13 @@
 import Foundation
 import UIKit
 
-enum QuizCategory{
-    case SPORTS
-    case SCIENCE
-    case DEFAULT
+
+public enum QuizCategory : Int16 {
+
+    
+    case SPORTS = 0
+    case SCIENCE = 1
+    case DEFAULT = 2
     
     var color: UIColor {
         switch self {
@@ -40,4 +43,6 @@ enum QuizCategory{
     
     
 }
+
+
 

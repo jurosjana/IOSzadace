@@ -18,7 +18,12 @@ class SingleQuizViewModel {
     
 
     var quizTitle: String {
-        return quiz?.title.uppercased() ?? ""
+        if let title = quiz?.title {
+            return title.uppercased()
+        }
+        else {
+            return ""
+        }
     }
     
     var descritpion: String {
@@ -33,6 +38,6 @@ class SingleQuizViewModel {
     }
     
     var questions : [Question]{
-        return quiz?.questions ?? []
+        return (quiz?.questions.questions ?? [])  
     }
 }

@@ -15,6 +15,7 @@
                 <outlet property="UsernameLabel" destination="6f3-hY-DRu" id="s2u-W2-CuF"/>
                 <outlet property="UsernameTF" destination="ikD-u3-J3V" id="YUf-gO-ARu"/>
                 <outlet property="WrongLabel" destination="Oym-Wy-ClT" id="ECb-xN-YRH"/>
+                <outlet property="titleLabel" destination="J8G-Vy-AVH" id="jls-Km-qgg"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Pdf-k9-pNs"/>
             </connections>
         </placeholder>
@@ -24,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6f3-hY-DRu">
-                    <rect key="frame" x="40" y="265.5" width="93" height="23"/>
+                    <rect key="frame" x="40" y="274.5" width="93" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     <nil key="highlightedColor"/>
@@ -36,17 +37,17 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ikD-u3-J3V">
-                    <rect key="frame" x="181" y="259.5" width="203" height="35"/>
+                    <rect key="frame" x="181" y="274.5" width="203" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fUu-J3-SL2">
-                    <rect key="frame" x="181" y="369" width="203" height="34"/>
+                    <rect key="frame" x="181" y="363.5" width="203" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QWi-PF-eNj">
-                    <rect key="frame" x="298" y="456" width="53" height="36"/>
+                    <rect key="frame" x="298" y="450.5" width="53" height="36"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <state key="normal" title="Log in">
                         <color key="titleColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -56,11 +57,18 @@
                         <action selector="Login:" destination="-1" eventType="touchUpInside" id="zPj-d7-gO2"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wrong username or password. Please try again." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oym-Wy-ClT">
-                    <rect key="frame" x="25" y="151" width="364" height="20.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wrong username or password. Please try again." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oym-Wy-ClT">
+                    <rect key="frame" x="25" y="204" width="364" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quiz App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8G-Vy-AVH">
+                    <rect key="frame" x="161" y="144" width="92" height="27.5"/>
+                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                    <nil key="textColor"/>
+                    <color key="highlightedColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="0.95786405460000001" green="0.90809620650415301" blue="0.90402853045760512" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -70,18 +78,20 @@
                 <constraint firstItem="Oym-Wy-ClT" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="HCh-tx-GIF"/>
                 <constraint firstItem="ikD-u3-J3V" firstAttribute="leading" secondItem="6f3-hY-DRu" secondAttribute="trailing" constant="48" id="Hl0-27-OsW"/>
                 <constraint firstItem="6f3-hY-DRu" firstAttribute="trailing" secondItem="NDt-Hu-H6U" secondAttribute="trailing" id="JaZ-vN-vcd"/>
+                <constraint firstItem="J8G-Vy-AVH" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="100" id="NTu-sE-6Xu"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="QWi-PF-eNj" secondAttribute="trailing" constant="63" id="UbV-lb-Cz1"/>
-                <constraint firstItem="fUu-J3-SL2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="369" id="XF8-JP-D2X"/>
                 <constraint firstItem="6f3-hY-DRu" firstAttribute="centerY" secondItem="ikD-u3-J3V" secondAttribute="centerY" id="YEp-KM-4tx"/>
+                <constraint firstItem="J8G-Vy-AVH" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="ZjS-JJ-yu9"/>
                 <constraint firstItem="NDt-Hu-H6U" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="325" id="aOu-rP-ccC"/>
                 <constraint firstItem="6f3-hY-DRu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="dXm-yR-BAL"/>
-                <constraint firstItem="Oym-Wy-ClT" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="107" id="eux-Up-Xqe"/>
-                <constraint firstItem="6f3-hY-DRu" firstAttribute="top" secondItem="Oym-Wy-ClT" secondAttribute="bottom" constant="94" id="ioD-I4-nUt"/>
+                <constraint firstItem="Oym-Wy-ClT" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="160" id="eux-Up-Xqe"/>
+                <constraint firstItem="6f3-hY-DRu" firstAttribute="top" secondItem="Oym-Wy-ClT" secondAttribute="bottom" constant="50" id="ioD-I4-nUt"/>
                 <constraint firstItem="QWi-PF-eNj" firstAttribute="top" secondItem="fUu-J3-SL2" secondAttribute="bottom" constant="53" id="l1f-Zi-x5F"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ikD-u3-J3V" secondAttribute="trailing" constant="30" id="mAk-uY-Gos"/>
                 <constraint firstItem="fUu-J3-SL2" firstAttribute="trailing" secondItem="ikD-u3-J3V" secondAttribute="trailing" id="qFg-ib-dh3"/>
                 <constraint firstItem="Oym-Wy-ClT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="rOJ-60-T2j"/>
-                <constraint firstItem="ikD-u3-J3V" firstAttribute="top" secondItem="Oym-Wy-ClT" secondAttribute="bottom" constant="88" id="tj2-iG-6b8"/>
+                <constraint firstItem="ikD-u3-J3V" firstAttribute="top" secondItem="Oym-Wy-ClT" secondAttribute="bottom" constant="50" id="tj2-iG-6b8"/>
+                <constraint firstItem="fUu-J3-SL2" firstAttribute="centerY" secondItem="NDt-Hu-H6U" secondAttribute="centerY" id="vyf-kQ-wog"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="137.68115942028987" y="92.410714285714278"/>
