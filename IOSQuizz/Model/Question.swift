@@ -30,9 +30,9 @@ class Question : NSObject,NSCoding{
     
     public required init?(coder: NSCoder) {
         self.question = coder.decodeObject(forKey: "question") as! String
-        self.correctAnswer = coder.decodeObject(forKey: "correctAnswer") as? Int ?? 0
+        self.correctAnswer = coder.decodeInteger(forKey: "correctAnswer")
         self.answers = (coder.decodeObject(forKey: "answers") as? [String] ?? [])
-        self.id = coder.decodeObject(forKey: "id") as? Int ?? 0
+        self.id = coder.decodeInteger(forKey: "id")
     }
 
 
@@ -54,13 +54,7 @@ class Question : NSObject,NSCoding{
         }
     }
     
-    func initWithCoder(coder: NSCoder)->Question {
-        self.question = coder.decodeObject(forKey: "question") as! String
-        self.correctAnswer = coder.decodeObject(forKey: "correctAnswer") as! Int
-        self.answers = (coder.decodeObject(forKey: "more") as? [String])!
-        self.id = coder.decodeObject(forKey: "id") as! Int
-        return self
-    }
+   
     
     
     init(answers:[String], correctAnswer : Int,id : Int,question : String){

@@ -16,7 +16,10 @@ class SettingsEkran : UIViewController {
   
     var usernameLabel: UILabel!
     
+    var imageView: UIImageView!
+    
     var username: UILabel!
+    
 
     
    
@@ -29,17 +32,18 @@ class SettingsEkran : UIViewController {
         logoutButton = UIButton()
         usernameLabel = UILabel()
         username = UILabel()
+        let image: UIImage = UIImage(named: "lavender3")!
+        imageView = UIImageView(image: image)
         self.view.addSubview(logoutButton)
         self.view.addSubview(usernameLabel)
         self.view.addSubview(username)
+        self.view.addSubview(imageView)
         bindViewModel()
         
     }
     
     
     func bindViewModel() {
-        
-        let guide = view.safeAreaLayoutGuide
 
         usernameLabel.text = "Username:"
         let userDefaults = UserDefaults.standard
@@ -48,18 +52,27 @@ class SettingsEkran : UIViewController {
         username.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         logoutButton.setTitleColor(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), for: .normal)
         usernameLabel.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        usernameLabel.font = usernameLabel.font.withSize(20)
+        username.font = usernameLabel.font.withSize(20)
        
         usernameLabel.autoPinEdge(.top, to: .top, of: self.view, withOffset: 200)
         usernameLabel.autoPinEdge(.left, to: .left, of: self.view, withOffset: 50)
        username.autoPinEdge(.top, to: .top, of: self.view, withOffset: 200)
         username.autoPinEdge(.right, to: .right, of: self.view, withOffset: -50)
         
-        logoutButton.autoPinEdge(.top, to: .bottom, of: username, withOffset: 40)
+        logoutButton.autoPinEdge(.top, to: .bottom, of: username, withOffset: 60)
         logoutButton.autoPinEdge(.right, to: .right, of: self.view, withOffset: -50)
+    
+        
+        
+        imageView.autoPinEdge(.left, to: .left, of: self.view)
+        imageView.autoPinEdge(.right, to: .right, of: self.view)
+        imageView.autoPinEdge(.bottom, to: .bottom, of: self.view)
+        imageView.autoPinEdge(.top, to: .top, of: self.view, withOffset: self.view.frame.size.height/2)
+        imageView.contentMode = UIView.ContentMode.scaleAspectFit
              
  
-        
-      
+    
         logoutButton.addTarget(self, action: #selector(logout), for: UIControl.Event.touchUpInside)
         
       

@@ -22,7 +22,7 @@ class QuizService{
                 if let data = data {
                     do {
                         let json = try JSONSerialization.jsonObject(with: data, options: [])
-                        print(json)
+                        //print(json)
                         if let resultsList = json as? [String:Any],
                             let results = resultsList["quizzes"] as? [[String:Any]]{
                             let quizzes = results.map({json -> Quiz? in

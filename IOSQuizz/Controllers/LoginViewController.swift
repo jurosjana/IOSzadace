@@ -56,9 +56,11 @@ class LoginViewController : UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        
-       self.UsernameTF.center = CGPoint(x: -UsernameTF.frame.size.width, y: UsernameTF.frame.origin.y+UsernameTF.frame.size.height/2)
-        self.PasswordTF.center = CGPoint(x: -PasswordTF.frame.size.width, y: PasswordTF.frame.origin.y+PasswordTF.frame.size.height/2)
+        let width = self.view.frame.size.width/2-30
+        UsernameTF.frame.size.width = width
+        PasswordTF.frame.size.width = width
+       self.UsernameTF.center = CGPoint(x: -width/2, y: UsernameTF.frame.origin.y+UsernameTF.frame.size.height/2)
+        self.PasswordTF.center = CGPoint(x: -width/2, y: PasswordTF.frame.origin.y+PasswordTF.frame.size.height/2)
         //self.UsernameTF.alpha = 0.0
         //self.PasswordTF.alpha = 0.0
        // self.titleLabel.alpha = 0.0
@@ -75,8 +77,9 @@ class LoginViewController : UIViewController {
     
     
     func animateEverythingIn() {
+        let width = self.view.frame.size.width/2-30
         UIView.animate(withDuration: 1, delay: 0.3, animations: {
-            self.UsernameTF.transform = CGAffineTransform.identity.translatedBy(x: self.UsernameTF.frame.size.width+self.view.frame.size.width*0.5, y: 0)
+            self.UsernameTF.transform = CGAffineTransform.identity.translatedBy(x: width + self.view.frame.size.width/2 - 30, y: 0)
             self.UsernameTF.alpha = 1
             self.titleLabel.transform = CGAffineTransform(scaleX: 1, y: 1)
            
@@ -85,7 +88,7 @@ class LoginViewController : UIViewController {
         }
         
         UIView.animate(withDuration: 1, delay:0.7, animations: {
-            self.PasswordTF.transform = CGAffineTransform(translationX: self.PasswordTF.frame.size.width+self.view.frame.size.width*0.5, y: 0)
+            self.PasswordTF.transform = CGAffineTransform(translationX: width+self.view.frame.size.width*0.5-30, y: 0)
             self.PasswordTF.alpha = 1
            
         }) { _ in

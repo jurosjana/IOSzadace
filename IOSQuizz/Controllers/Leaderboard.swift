@@ -36,7 +36,7 @@ class Leaderboard : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let viewModel = viewModel{
+        if  viewModel != nil {
             setupTableView()
             bindViewModel()
         }

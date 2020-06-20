@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Reachability
 
 var otvoreniKviz1: Int16?
 var otvoreniKviz2: Int16?
@@ -169,20 +170,32 @@ class KvizEkran : UIViewController {
 extension KvizEkran : QuestionViewDelegate{
     
     func questionAnswered(correct: Bool) {
+        //ako je zadnje pitanje i ima interneta posalji rezultate
         if (correct) {self.correct += 1}
         answered += 1
         //print("answered: ",answered)
         //ako je odg na zadnje pitanje
         if (answered == viewModel.questions.count){
-            sendAnswers()
+            let reachability = try! Reachability()
+            if(reachability.connection != .unavailable){
+                sendAnswers()
+            } else {
+                let alert = UIAlertController(title: "Failed", message: "Unable to send results to server because device is not connected to Internet.", preferredStyle: .alert)
+                  alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                  NSLog("The \"OK\" alert occured.")
+                  }))
+                   DispatchQueue.main.async {
+                    self.present(alert, animated: true, completion: nil)
+                   }
+            }
         }
+        //listaj po scroll viewu
         let width = Int(UIScreen.main.bounds.width)
         ScrollView.setContentOffset(CGPoint.init(x: answered*width, y: 0), animated: true)
     }
+        
     
     func sendAnswers(){
-        
-        
         
        let time = Date.init()
        let interval = time.timeIntervalSince(start!)
@@ -191,6 +204,7 @@ extension KvizEkran : QuestionViewDelegate{
       // let token = userDefaults.string(forKey: "token")
        let parameters = ["quiz_id": viewModel.quiz!.id, "user_id": Int(id)!, "time": interval, "no_of_correct": self.correct] as [String : Any]
 
+        
         QuizService().sendAnswers(parameters: parameters, completion: { response in
             if let response = response {
                 if (response != ServerResponse.OK){
