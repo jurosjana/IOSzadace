@@ -97,6 +97,7 @@ class LoginViewController : UIViewController {
 
     
     func animateEverythingOut(completion: ((Bool)->Void)?){
+        WrongLabel.isHidden = true
         UIView.animate(withDuration: 1, delay:0.0, animations: {
             self.titleLabel.transform = CGAffineTransform(translationX: 0, y: -800)
         }) { _ in
